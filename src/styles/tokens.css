@@ -1,0 +1,34 @@
+/* =========================================================================
+   Design tokens — 山林行動手冊
+   紙感底色、深林綠、襯線標題；與舊版視覺調性一致，版面由 app.css 重新設計。
+   ========================================================================= */
+
+:root {
+  /* 色彩 */
+  --forest: #123c2f;
+  --forest-deep: #0a241c;
+  --green: #24634a;
+  --moss: #6f8061;
+  --cream: #f5f1e8;
+  --paper: #fffdf7;
+  --ink: #18231e;
+  --muted: #69736d;
+  --orange: #db5b37;
+  --amber: #d99a2b;
+  --line: #e3ded1;
+
+  /* 三日路線用色，與 route-map-data.ts 的 dayColors 一致 */
+  --day-1: #1687d5;
+  --day-2: #249b58;
+  --day-3: #ef8a2f;
+
+  /* 字體 */
+  --font-sans: "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+  --font-serif: "Noto Serif TC", "Songti TC", "Times New Roman", serif;
+
+  /* 尺度 */
+  --pad: 18px;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(18, 60, 47, 0.05), 0 8px 20px -12px rgba(18, 60, 47, 0.3);
+}
