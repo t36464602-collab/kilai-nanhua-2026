@@ -439,10 +439,10 @@
   overscroll-behavior-x: contain;
 }
 
-/* 寬度對齊 route-map-data 的 VIEW_WIDTH（800 × 0.72），1:1 不縮放文字才不糊 */
+/* 寬度對齊 route-map-data 的 VIEW_WIDTH（860 × 0.72），1:1 不縮放文字才不糊 */
 .overview-svg {
   display: block;
-  width: 576px;
+  width: 619.2px;
   height: 400px;
 }
 

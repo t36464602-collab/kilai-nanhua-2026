@@ -68,19 +68,19 @@ export const routeNodes: RouteNode[] = [
   },
   {
     id: "fork", place: "天池岔路", meta: "約 3,100 m", icon: "lake",
-    x: 688, y: 140, label: { dx: 20, dy: -2, anchor: "start" }, days: [1],
+    x: 690, y: 138, label: { dx: 20, dy: -6, anchor: "start" }, days: [1],
   },
   {
     id: "south", place: "奇萊南峰", meta: "3,358 m", icon: "peak",
-    x: 650, y: 32, label: { dx: -20, dy: 6, anchor: "end" }, days: [1],
+    x: 655, y: 30, label: { dx: -20, dy: 6, anchor: "end" }, days: [1],
   },
   {
     id: "nanhua", place: "南華山", meta: "3,184 m", icon: "peak",
-    x: 716, y: 258, label: { dx: 22, dy: 4, anchor: "start" }, days: [1],
+    x: 745, y: 250, label: { dx: 20, dy: 4, anchor: "start" }, days: [1],
   },
   {
     id: "monument", place: "光被八表", meta: "約 2,798 m", icon: "monument",
-    x: 658, y: 360, label: { dx: -18, dy: 0, anchor: "end" }, days: [1],
+    x: 672, y: 362, label: { dx: -18, dy: 0, anchor: "end" }, days: [1],
   },
 ];
 
@@ -102,25 +102,26 @@ const TRAIL =
   "C 592 225 605 216 619 199 C 628 188 637 180 650 191";
 
 /*
- * 登頂日環線：五段都用單一大弧線，整體讀起來是一顆飽滿的水滴形——
- * 山莊順接上岔路，向左上大弧至奇萊南峰（原路折返），向右下鼓出經南華山、
- * 光被八表，再沿左側近垂直回收到山莊。控制點刻意向外撐，補償 X_SCALE 壓縮。
+ * 登頂日環線：整體是一顆向右開展的水滴形——山莊順接上岔路，向左上緩弧至
+ * 奇萊南峰（原路折返），向右大幅鼓出經南華山，順勢收到光被八表，
+ * 再沿左緣近垂直回到山莊。長段用兩段緩和的 S 曲線，帶一點山徑的自然起伏；
+ * 節點與控制點刻意向右撐開，補償 X_SCALE 壓縮後環才不會又窄又擠。
  */
 
 /** 天池山莊 → 天池岔路 */
-const TO_FORK = "M 650 191 C 662 174 675 158 688 140";
+const TO_FORK = "M 650 191 C 660 178 668 165 675 154 C 680 147 685 142 690 138";
 
 /** 天池岔路 → 奇萊南峰 */
-const TO_SOUTH = "M 688 140 C 698 102 682 60 650 32";
+const TO_SOUTH = "M 690 138 C 698 112 700 88 692 68 C 685 52 672 40 655 30";
 
 /** 天池岔路 → 南華山 */
-const TO_NANHUA = "M 688 140 C 710 172 722 214 716 258";
+const TO_NANHUA = "M 690 138 C 712 160 730 185 738 212 C 743 226 745 238 745 250";
 
 /** 南華山 → 光被八表 */
-const TO_MONUMENT = "M 716 258 C 710 298 686 334 658 360";
+const TO_MONUMENT = "M 745 250 C 742 286 728 318 706 340 C 696 350 685 357 672 362";
 
 /** 光被八表 → 天池山莊 */
-const BACK_TO_LODGE = "M 658 360 C 641 312 640 242 650 191";
+const BACK_TO_LODGE = "M 672 362 C 654 330 646 292 646 254 C 646 232 647 210 650 191";
 
 /**
  * 橫向壓縮倍率：參考圖是 2:1 的寬扁比例，直接照搬在手機上要滑很久。
@@ -128,7 +129,8 @@ const BACK_TO_LODGE = "M 658 360 C 641 312 640 242 650 191";
  * 節點放在 x * X_SCALE，路徑則整組套 scale(X_SCALE, 1) 並用 non-scaling-stroke 維持線寬一致。
  */
 export const X_SCALE = 0.72;
-export const VIEW_WIDTH = 800 * X_SCALE;
+// 原始寬 860（比參考圖多 60）：右側留給撐開後的登頂日環線與南華山標籤
+export const VIEW_WIDTH = 860 * X_SCALE;
 export const VIEW_HEIGHT = 400;
 
 export type RouteSegment = { d: string; day: number; offsetY?: number };
@@ -161,11 +163,11 @@ export const routeSegments: RouteSegment[] = [
 export type RouteArrow = { x: number; y: number; angle: number; day: number };
 
 export const routeArrows: RouteArrow[] = [
-  { x: 669, y: 165, angle: -52, day: 1 }, // 天池山莊 → 天池岔路
-  { x: 684, y: 84, angle: -123, day: 1 }, // 天池岔路 → 奇萊南峰
-  { x: 712, y: 200, angle: 81, day: 1 }, // 天池岔路 → 南華山
-  { x: 694, y: 314, angle: 125, day: 1 }, // 南華山 → 光被八表
-  { x: 643, y: 276, angle: -88, day: 1 }, // 光被八表 → 天池山莊
+  { x: 670, y: 163, angle: -54, day: 1 }, // 天池山莊 → 天池岔路
+  { x: 695, y: 80, angle: -113, day: 1 }, // 天池岔路 → 奇萊南峰
+  { x: 731, y: 194, angle: 60, day: 1 }, // 天池岔路 → 南華山
+  { x: 728, y: 316, angle: 133, day: 1 }, // 南華山 → 光被八表
+  { x: 646, y: 290, angle: -90, day: 1 }, // 光被八表 → 天池山莊
 ];
 
 export const dayColors = ["#1687d5", "#249b58", "#ef8a2f"];
