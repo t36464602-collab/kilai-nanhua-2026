@@ -1,12 +1,13 @@
 import { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
-import { dayPlaces, gpxFacts } from "../lib/trip-data";
+import { allPlaces, dayPlaces, gpxFacts } from "../lib/trip-data";
 
 /**
  * 2026/05/01 實走 GPX 的完整軌跡。GPX 檔本身由 service worker 快取，離線可讀；
  * OpenTopoMap 的地形圖磚未預載，離線時不保證顯示。
+ * 不傳 day 時顯示全程主要航點（行程頁單一地圖模式）。
  */
-export function GpxMap({ day }: { day: number }) {
+export function GpxMap({ day }: { day?: number }) {
   const element = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export function GpxMap({ day }: { day: number }) {
       }).addTo(map);
 
       const line = L.polyline(track, { color: "#dc4e2f", weight: 5, opacity: 0.92 }).addTo(map);
-      const wanted = dayPlaces[day];
+      const wanted = day === undefined ? allPlaces : dayPlaces[day];
       waypoints
         .filter(point => wanted.some(name => point.name.includes(name.replace("登山口", ""))))
         .forEach(point => {

@@ -329,83 +329,47 @@
   transition: width 0.3s ease;
 }
 
-/* ---------- 行程總覽：三日卡 ---------- */
+/* ---------- 行程頁：三日跳轉 pill ---------- */
 
-.day-card-list {
+.day-jump {
   display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-.day-card {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  padding: 13px;
+.day-jump button {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 10px 6px;
   border: 1px solid var(--line);
-  border-left: 4px solid var(--day-color);
-  border-radius: var(--radius);
+  border-top: 3px solid var(--day-color);
+  border-radius: var(--radius-sm);
   background: var(--paper);
   box-shadow: var(--shadow);
 }
 
-.day-card-tile {
-  display: grid;
-  justify-items: center;
-  gap: 1px;
-  flex: none;
-  width: 62px;
-  padding: 8px 0;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--day-color) 10%, var(--paper));
-  color: color-mix(in srgb, var(--day-color) 72%, var(--ink));
-}
-
-.day-card-tile small {
-  font-size: 8.5px;
+.day-jump small {
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.1em;
-}
-
-.day-card-tile b {
-  font-family: var(--font-serif);
-  font-size: 18px;
-}
-
-.day-card-tile span {
-  font-size: 10px;
-}
-
-.day-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  flex: 1;
-  min-width: 0;
-}
-
-.day-card-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
   color: var(--day-color);
 }
 
-.day-card-body strong {
+.day-jump b {
   font-family: var(--font-serif);
-  font-size: 16px;
+  font-size: 17px;
 }
 
-.day-card-body small {
-  font-size: 11px;
+.day-jump span {
+  font-size: 10.5px;
   color: var(--muted);
 }
 
-.day-card-chevron {
-  flex: none;
-  color: var(--moss);
+/* 錨點捲動時預留 sticky topbar 的高度 */
+.day-section {
+  scroll-margin-top: 76px;
 }
 
 /* ---------- 路線總覽圖 ---------- */
@@ -524,73 +488,50 @@
   color: var(--muted);
 }
 
-/* ---------- 行程總覽：GPX 卡 ---------- */
+/* ---------- 參考資料 ---------- */
 
-.gpx-facts-card {
+.reference-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reference-list a {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 13px;
+  padding: 11px 13px;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   background: var(--paper);
-  color: var(--forest);
+  color: var(--ink);
 }
 
-.gpx-facts-card b {
+.reference-list a svg {
+  flex: none;
+  color: var(--moss);
+}
+
+.reference-list a span {
+  flex: 1;
+  min-width: 0;
+}
+
+.reference-list b {
   display: block;
-  font-size: 13px;
+  font-size: 12.5px;
 }
 
-.gpx-facts-card small {
+.reference-list small {
   display: block;
   margin-top: 2px;
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--muted);
 }
 
-/* ---------- 當日頁：日期切換 ---------- */
-
-.day-switch {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.day-switch-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--green);
-}
-
-.day-switch-tabs {
-  display: flex;
-  gap: 6px;
-}
-
-.day-switch-tabs a {
-  padding: 6px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--paper);
-  font-size: 12px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  transition: background 0.18s, border-color 0.18s, color 0.18s;
-}
-
-.day-switch-tabs a.is-active {
-  background: var(--day-color);
-  border-color: var(--day-color);
-  color: #fff;
-}
-
-/* ---------- 當日頁：摘要 ---------- */
+/* ---------- 行程：日摘要 ---------- */
 
 .day-summary {
   margin-bottom: 26px;
@@ -612,10 +553,10 @@
   color: var(--day-color);
 }
 
-.day-summary h1 {
+.day-summary h2 {
   margin: 8px 0 14px;
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: 21px;
 }
 
 .day-summary dl {
@@ -661,9 +602,29 @@
 .map-facts {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
   padding: 10px 13px;
   border-top: 1px solid var(--line);
+}
+
+.map-fact-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--forest);
+}
+
+.map-fact-main b {
+  display: block;
+  font-size: 12.5px;
+}
+
+.map-fact-main small {
+  display: block;
+  margin-top: 1px;
+  font-size: 11px;
+  color: var(--muted);
 }
 
 .map-legend {
@@ -811,45 +772,6 @@
   color: var(--muted);
 }
 
-/* ---------- 當日頁：前後日 ---------- */
-
-.day-pager {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 26px 0 6px;
-}
-
-.day-pager-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--paper);
-  color: var(--ink);
-}
-
-.day-pager-link.is-next {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.day-pager-link small {
-  display: block;
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-
-.day-pager-link b {
-  display: block;
-  margin-top: 2px;
-  font-size: 12px;
-}
-
 /* ---------- 裝備 ---------- */
 
 .gear-total {
@@ -936,16 +858,27 @@
 }
 
 .check-item {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  width: 100%;
-  padding: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: var(--paper);
-  text-align: left;
   transition: background 0.15s, border-color 0.15s;
+}
+
+.check-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.check-main {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 0;
+  background: none;
+  text-align: left;
 }
 
 .check-box {
@@ -960,6 +893,31 @@
   transition: background 0.15s, border-color 0.15s;
 }
 
+.check-info-btn {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  border: 0;
+  border-left: 1px dashed var(--line);
+  background: none;
+  color: var(--moss);
+}
+
+.check-info-btn[aria-expanded="true"] {
+  color: var(--green);
+  background: rgba(18, 60, 47, 0.05);
+}
+
+.check-detail {
+  margin: 0;
+  padding: 11px 13px;
+  border-top: 1px dashed var(--line);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
 .check-item.is-checked {
   background: rgba(36, 155, 88, 0.06);
   border-color: rgba(36, 155, 88, 0.34);
@@ -970,18 +928,18 @@
   border-color: var(--green);
 }
 
-.check-item.is-checked b {
+.check-item.is-checked .check-main b {
   color: var(--muted);
   text-decoration: line-through;
   text-decoration-color: rgba(105, 115, 109, 0.45);
 }
 
-.check-item b {
+.check-main b {
   display: block;
   font-size: 13.5px;
 }
 
-.check-item small {
+.check-main small {
   display: block;
   margin-top: 2px;
   font-size: 11px;

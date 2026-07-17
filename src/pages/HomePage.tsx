@@ -80,7 +80,7 @@ export function HomePage() {
           </Link>
         </div>
 
-        <Link className="today-card" to={`/trip/${focusIndex + 1}`}>
+        <Link className="today-card" to="/trip" state={{ day: focusIndex }}>
           <span className="date-tile">
             <b>{day.date.split("/")[1]}</b>
             <small>AUG</small>

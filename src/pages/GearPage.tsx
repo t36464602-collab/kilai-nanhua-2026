@@ -1,10 +1,12 @@
-import { Backpack, Check } from "lucide-react";
+import { useState } from "react";
+import { Backpack, Check, Info } from "lucide-react";
 import { PageHead } from "../components/Chrome";
 import { gearGroups, totalGear } from "../lib/trip-data";
 import { useGear } from "../lib/hooks";
 
 export function GearPage() {
   const { checked, toggle } = useGear();
+  const [expanded, setExpanded] = useState<string | null>(null);
   const percent = Math.round((checked.length / totalGear) * 100);
 
   return (
@@ -12,7 +14,7 @@ export function GearPage() {
       <PageHead
         kicker="PACK SMART"
         title="裝備檢查表"
-        intro="依台灣 368 裝備建議整理。勾選結果保留在這支手機，離線也能用；輕裝總重建議 8 kg 以下。"
+        intro="裝備依台灣 368 建議整理，點 ⓘ 看完整說明。勾選結果保留在這支手機，離線也能用；輕裝總重建議 8 kg 以下。"
       />
 
       <div className="gear-total">
@@ -46,22 +48,34 @@ export function GearPage() {
               </span>
             </div>
             <ul className="check-list">
-              {group.items.map(({ item, purpose }) => {
+              {group.items.map(({ item, brief, detail }) => {
                 const isChecked = checked.includes(item);
+                const isExpanded = expanded === item;
                 return (
-                  <li key={item}>
-                    <button
-                      className={`check-item ${isChecked ? "is-checked" : ""}`}
-                      role="checkbox"
-                      aria-checked={isChecked}
-                      onClick={() => toggle(item)}
-                    >
-                      <i className="check-box">{isChecked && <Check size={13} strokeWidth={3.2} />}</i>
-                      <span>
-                        <b>{item}</b>
-                        <small>{purpose}</small>
-                      </span>
-                    </button>
+                  <li className={`check-item ${isChecked ? "is-checked" : ""}`} key={item}>
+                    <div className="check-row">
+                      <button
+                        className="check-main"
+                        role="checkbox"
+                        aria-checked={isChecked}
+                        onClick={() => toggle(item)}
+                      >
+                        <i className="check-box">{isChecked && <Check size={13} strokeWidth={3.2} />}</i>
+                        <span>
+                          <b>{item}</b>
+                          <small>{brief}</small>
+                        </span>
+                      </button>
+                      <button
+                        className="check-info-btn"
+                        aria-label={`${item} 完整說明`}
+                        aria-expanded={isExpanded}
+                        onClick={() => setExpanded(isExpanded ? null : item)}
+                      >
+                        <Info size={17} />
+                      </button>
+                    </div>
+                    {isExpanded && <p className="check-detail">{detail}</p>}
                   </li>
                 );
               })}
