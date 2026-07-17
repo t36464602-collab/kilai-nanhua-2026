@@ -1,1 +1,1069 @@
-/* 版面樣式：階段 3 重新設計時填入 */
+/* =========================================================================
+   版面樣式 — 依新資訊架構重新設計
+   首頁儀表板／行程總覽卡／當日頁／裝備／資訊
+   ========================================================================= */
+
+/* ---------- 首頁 Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 26px;
+  padding: 22px 20px 18px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.07) 1px, transparent 0) 0 0 / 15px 15px,
+    linear-gradient(158deg, #17493a 0%, #0d2f25 58%, var(--forest-deep) 100%);
+  color: #f2efe4;
+  box-shadow: 0 18px 34px -20px rgba(12, 42, 33, 0.75);
+}
+
+.hero > *:not(.hero-ridge) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-ridge {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 92px;
+  fill: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(242, 239, 228, 0.62);
+}
+
+.hero-title {
+  margin: 10px 0 18px;
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.countdown b {
+  font-family: var(--font-serif);
+  font-size: 60px;
+  line-height: 0.9;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown span {
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(242, 239, 228, 0.7);
+}
+
+.hero-stats {
+  display: flex;
+  margin: 18px 0 0;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.hero-stats div {
+  flex: 1;
+}
+
+.hero-stats dt {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(242, 239, 228, 0.55);
+}
+
+.hero-stats dd {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ---------- 首頁：今日行程卡 ---------- */
+
+.today-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.date-tile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 58px;
+  border-radius: 12px;
+  background: var(--forest);
+  color: #fff;
+}
+
+.date-tile b {
+  font-family: var(--font-serif);
+  font-size: 23px;
+  line-height: 1;
+}
+
+.date-tile small {
+  margin-top: 3px;
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+}
+
+.today-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+}
+
+.today-body strong {
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+}
+
+.today-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.today-chevron {
+  flex: none;
+  color: var(--moss);
+}
+
+.day-pill {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.day-pill.day-1 {
+  background: rgba(22, 135, 213, 0.12);
+  color: #10618f;
+}
+
+.day-pill.day-2 {
+  background: rgba(36, 155, 88, 0.13);
+  color: #1a6b3d;
+}
+
+.day-pill.day-3 {
+  background: rgba(239, 138, 47, 0.16);
+  color: #a2590f;
+}
+
+/* ---------- 提醒 ---------- */
+
+.notice-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notice {
+  display: flex;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--moss);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.notice-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+
+.notice-urgent {
+  border-left-color: var(--orange);
+}
+
+.notice-urgent .notice-icon {
+  background: rgba(219, 91, 55, 0.12);
+  color: var(--orange);
+}
+
+.notice-warn {
+  border-left-color: var(--amber);
+}
+
+.notice-warn .notice-icon {
+  background: rgba(217, 154, 43, 0.15);
+  color: #a06d10;
+}
+
+.notice-info {
+  border-left-color: var(--green);
+}
+
+.notice-info .notice-icon {
+  background: rgba(36, 99, 74, 0.1);
+  color: var(--green);
+}
+
+.notice-tag {
+  display: inline-block;
+  margin-bottom: 3px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.notice h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.notice p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+/* ---------- 進度（首頁與裝備頁共用） ---------- */
+
+.progress-card {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.progress-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 12px;
+}
+
+.progress-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: rgba(18, 60, 47, 0.07);
+  color: var(--forest);
+}
+
+.progress-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-text strong {
+  font-size: 14px;
+}
+
+.progress-text small {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.progress-value {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--forest);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar {
+  display: block;
+  height: 7px;
+  border-radius: 99px;
+  background: rgba(18, 60, 47, 0.1);
+  overflow: hidden;
+}
+
+.progress-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--green), var(--day-2));
+  transition: width 0.3s ease;
+}
+
+/* ---------- 行程總覽：三日卡 ---------- */
+
+.day-card-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--day-color);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.day-card-tile {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  flex: none;
+  width: 62px;
+  padding: 8px 0;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--day-color) 10%, var(--paper));
+  color: color-mix(in srgb, var(--day-color) 72%, var(--ink));
+}
+
+.day-card-tile small {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.day-card-tile b {
+  font-family: var(--font-serif);
+  font-size: 18px;
+}
+
+.day-card-tile span {
+  font-size: 10px;
+}
+
+.day-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.day-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--day-color);
+}
+
+.day-card-body strong {
+  font-family: var(--font-serif);
+  font-size: 16px;
+}
+
+.day-card-body small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.day-card-chevron {
+  flex: none;
+  color: var(--moss);
+}
+
+/* ---------- 路線總覽圖 ---------- */
+
+.overview-card {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.overview-legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.legend-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--cream);
+  font-size: 10.5px;
+  transition: border-color 0.18s, background 0.18s;
+}
+
+.legend-chip i {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--day-color);
+}
+
+.legend-chip b {
+  letter-spacing: 0.04em;
+}
+
+.legend-chip span {
+  color: var(--muted);
+}
+
+.legend-chip.is-active {
+  border-color: var(--day-color);
+  background: color-mix(in srgb, var(--day-color) 10%, var(--paper));
+}
+
+/* 底色與線條外框同色，外框才會隱形，只在兩線交疊處把它們分開 */
+.overview-scroll {
+  overflow-x: auto;
+  border-radius: 12px;
+  background: var(--paper);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+/* 寬度對齊 route-map-data 的 VIEW_WIDTH（800 × 0.72），1:1 不縮放文字才不糊 */
+.overview-svg {
+  display: block;
+  width: 576px;
+  height: 400px;
+}
+
+.overview-line {
+  transition: opacity 0.22s ease, stroke-width 0.22s ease;
+}
+
+.overview-node {
+  transition: opacity 0.22s ease;
+}
+
+.overview-node.is-muted {
+  opacity: 0.3;
+}
+
+.overview-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3.5px;
+  stroke-linejoin: round;
+}
+
+.overview-meta {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  fill: var(--muted);
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.overview-swipe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px 0 0;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.overview-note {
+  margin: 8px 2px 0;
+  font-size: 10.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ---------- 行程總覽：GPX 卡 ---------- */
+
+.gpx-facts-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--forest);
+}
+
+.gpx-facts-card b {
+  display: block;
+  font-size: 13px;
+}
+
+.gpx-facts-card small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---------- 當日頁：日期切換 ---------- */
+
+.day-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.day-switch-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.day-switch-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.day-switch-tabs a {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.day-switch-tabs a.is-active {
+  background: var(--day-color);
+  border-color: var(--day-color);
+  color: #fff;
+}
+
+/* ---------- 當日頁：摘要 ---------- */
+
+.day-summary {
+  margin-bottom: 26px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--day-color);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.day-summary-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--day-color);
+}
+
+.day-summary h1 {
+  margin: 8px 0 14px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+}
+
+.day-summary dl {
+  display: flex;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.day-summary dl div {
+  flex: 1;
+}
+
+.day-summary dt {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.day-summary dd {
+  margin: 4px 0 0;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+/* ---------- 當日頁：GPX 地圖 ---------- */
+
+.map-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.gpx-map {
+  width: 100%;
+  height: 280px;
+  background: #e8e4d8;
+}
+
+.map-facts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 13px;
+  border-top: 1px solid var(--line);
+}
+
+.map-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.map-legend i {
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: #dc4e2f;
+}
+
+.route-tooltip {
+  background: var(--forest) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 4px 6px !important;
+  font-family: var(--font-sans);
+  font-size: 9px !important;
+  font-weight: 800;
+}
+
+.route-tooltip::before {
+  border-top-color: var(--forest) !important;
+}
+
+.leaflet-control-attribution {
+  font-size: 7px !important;
+}
+
+.leaflet-control-zoom a {
+  color: var(--forest) !important;
+}
+
+/* ---------- 當日頁：時間軸 ---------- */
+
+.segment-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: rgba(18, 60, 47, 0.045);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px 18px 1fr;
+  padding-bottom: 18px;
+}
+
+.timeline-row::before {
+  content: "";
+  position: absolute;
+  left: 54px;
+  top: 16px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--line);
+}
+
+.timeline-row:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-row:last-child::before {
+  display: none;
+}
+
+.timeline-row time {
+  padding-top: 1px;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--forest);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-row i {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  margin-top: 4px;
+  width: 11px;
+  height: 11px;
+  border: 2.5px solid var(--day-color);
+  border-radius: 50%;
+  background: var(--cream);
+}
+
+.timeline-row i.is-first {
+  background: var(--day-color);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--day-color) 18%, transparent);
+}
+
+.timeline-row > div {
+  padding-left: 12px;
+}
+
+.timeline-row h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.timeline-row p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.segment {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 7px;
+  padding: 3px 8px;
+  border-radius: 7px;
+  background: rgba(18, 60, 47, 0.05);
+  font-size: 10.5px;
+}
+
+.segment b {
+  color: var(--forest);
+}
+
+.segment em {
+  font-style: normal;
+  color: var(--muted);
+}
+
+/* ---------- 當日頁：前後日 ---------- */
+
+.day-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 26px 0 6px;
+}
+
+.day-pager-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.day-pager-link.is-next {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.day-pager-link small {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.day-pager-link b {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+/* ---------- 裝備 ---------- */
+
+.gear-total {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 22px;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--forest);
+  color: #f2efe4;
+}
+
+.gear-total .progress-icon {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.gear-total .progress-text small {
+  color: rgba(242, 239, 228, 0.6);
+}
+
+.gear-total .progress-value {
+  color: #fff;
+}
+
+.gear-total .progress-bar {
+  grid-column: 1 / -1;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.gear-total .progress-bar i {
+  background: #8fd3a8;
+}
+
+.gear-group {
+  margin-bottom: 22px;
+}
+
+.gear-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.gear-group-head h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+}
+
+.gear-group-head small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.gear-count {
+  flex: none;
+  padding: 4px 9px;
+  border-radius: 99px;
+  background: rgba(18, 60, 47, 0.07);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.gear-count.is-complete {
+  background: rgba(36, 155, 88, 0.15);
+  color: #1a6b3d;
+}
+
+.check-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.check-box {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 21px;
+  height: 21px;
+  border: 2px solid #cfcabb;
+  border-radius: 7px;
+  color: #fff;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.check-item.is-checked {
+  background: rgba(36, 155, 88, 0.06);
+  border-color: rgba(36, 155, 88, 0.34);
+}
+
+.check-item.is-checked .check-box {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.check-item.is-checked b {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(105, 115, 109, 0.45);
+}
+
+.check-item b {
+  display: block;
+  font-size: 13.5px;
+}
+
+.check-item small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* ---------- 資訊 ---------- */
+
+.info-cards {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.info-card {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.info-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: rgba(18, 60, 47, 0.07);
+  color: var(--forest);
+}
+
+.info-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 5px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+
+.status-tag {
+  padding: 2.5px 7px;
+  border-radius: 99px;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.status-ok {
+  background: rgba(36, 155, 88, 0.14);
+  color: #1a6b3d;
+}
+
+.status-pending {
+  background: rgba(219, 91, 55, 0.14);
+  color: #a83a1c;
+}
+
+.offline-card.is-offline {
+  border-color: rgba(219, 91, 55, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
